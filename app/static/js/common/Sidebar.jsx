@@ -1,0 +1,27 @@
+import React from 'react';
+
+
+export default class Sidebar extends React.Component {
+    render() {
+        return (
+            <nav id="sidebar">
+                <div className="sidebar-header">
+                    <img style={{ position: "relative", top: "14px", left: "25px" }} src={"/static/images/logo.png"} width={"40"}/>
+                    <h3 style={{display: "inline-block", marginLeft: "35px"}}>Web Spyder</h3>
+                </div>
+
+                <ul className="list-unstyled components">
+                    <li className="active"><a href="#">
+                        <span style={{ fontSize: "20px", position: "relative", right: "10px", top: "1px" }} className="fa fa-tv"/> Desktop
+                    </a></li>
+                    <li className="active"><a href="#">
+                        <span style={{ fontSize: "28px", position: "relative", right: "10px", top: "3px" }} className="fa fa-mobile"/> Mobile
+                    </a></li>
+                    <li id="copyright">
+                        &copy; NameNotFoundException
+                    </li>
+                </ul>
+            </nav>
+        )
+    }
+}

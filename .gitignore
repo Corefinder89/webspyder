@@ -1,0 +1,7 @@
+.env
+venv/
+*.pyc
+app/static/dist/
+.vscode/
+.idea/
+node_modules/

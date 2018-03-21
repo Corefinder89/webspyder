@@ -1,0 +1,23 @@
+{
+  "name": "Hackathon",
+  "authors": [
+    "Bony Roopchandani <broopchandani@datalicious.com>"
+  ],
+  "description": "Micro product based on GA360",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.6",
+    "react": "^15.1.0"
+  },
+  "directory": "./app/static/bower_components"
+}

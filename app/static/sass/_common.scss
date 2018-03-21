@@ -1,0 +1,59 @@
+#sidebar {
+    min-width: $sidebar-width;
+    max-width: $sidebar-width;
+    height: 100vh;
+    background: $sidebar-bg;
+    color: $sidebar-color;
+    transition: all 0.3s;
+    position: fixed;
+
+    .sidebar-header {
+        padding: 10px;
+        background: $sidebar-header-bg;
+    }
+
+    ul.components {
+        padding: 10px 0;
+    }
+    
+    ul {
+        li a {
+            padding: 10px;
+            font-size: 1.1em;
+            display: block;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            color: $sidebar-color;
+            text-decoration: none;
+
+            &:hover {
+                color: $sidebar-active-color;
+                background: #fff;
+            }
+        }
+    }
+
+    #copyright {
+        position: absolute;
+        bottom: $content-padding;
+        left: $content-padding;
+        list-style-type: none;
+        list-style: none;
+    }
+}
+
+footer {
+    height: $footer-height;
+    background: $sidebar-bg;
+    width: 100%;
+    color: $sidebar-color;
+
+    div {
+        line-height: $footer-height;
+    }
+
+    #hackathon {
+        text-align: center;
+    }
+}
