@@ -1,8 +1,11 @@
-$sidebar-header-bg: grey;
+$theme-color: #222D32;
+$sidebar-header-bg: $theme-color;
 $sidebar-bg: rgba($sidebar-header-bg, 0.95);
-$sidebar-color: #fff;
+$sidebar-color: #FFF;
 $sidebar-active-color: #000;
+$header-bg: hsla(0,0%,100%,.96);
 
-$content-padding: 20px;
+$content-padding: 24px;
 $sidebar-width: 280px;
-$footer-height: 50px;
+$header-height: 60px;
+$footer-height: 60px;

@@ -6,8 +6,10 @@ export default class Sidebar extends React.Component {
         return (
             <nav id="sidebar">
                 <div className="sidebar-header">
-                    <img style={{ position: "relative", top: "14px", left: "25px" }} src={"/static/images/logo.png"} width={"40"}/>
-                    <h3 style={{display: "inline-block", marginLeft: "35px"}}>Web Spyder</h3>
+                    <a href="/">
+                        <img style={{ position: "relative", top: "-2px", left: "30px" }} src={"/static/images/logo.png"} width={"40"}/>
+                        <h3 style={{display: "inline-block", marginLeft: "40px"}}>Web Spyder</h3>
+                    </a>
                 </div>
 
                 <ul className="list-unstyled components">
