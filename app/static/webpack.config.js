@@ -5,7 +5,7 @@ var extractPlugin = new ExtractTextPlugin({
 });
 
 module.exports = {
-    entry: __dirname + '/js/index.jsx',
+    entry: ['babel-polyfill', __dirname + '/js/index.jsx'],
     output: {
         filename: 'bundle.js',
         path: __dirname + '/dist'

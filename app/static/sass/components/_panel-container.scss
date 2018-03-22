@@ -1,0 +1,20 @@
+.panel-container {
+    margin-top: $content-padding;
+    padding: $content-padding;
+    width: 100%;
+    border: 1px solid rgba(#e3e3e3, 0.5);
+    border-radius: 3px;
+    background: $panel-container-bg;
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.14);
+    position: relative;
+    display: inline-block;
+
+    span {
+        color: $theme-color;
+        font-size: 26px;
+    }
+
+    #pcontent {
+        margin-top: $content-padding;
+    }
+}

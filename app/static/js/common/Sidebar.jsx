@@ -1,8 +1,49 @@
 import React from 'react';
 
+import { connect } from "react-redux"
 
+import classnames from "classnames"
+
+import actions from "../redux/actions"
+
+
+@connect((state) => state)
 export default class Sidebar extends React.Component {
+    constructor(...args) {
+        super(...args)
+
+        this.fields = [{
+            label: "desktop",
+            name: "Desktop",
+            icon: "fa fa-tv",
+            iconFontSize: 24,
+        }, {
+            label: "mobile",
+            name: "Mobile",
+            icon: "fa fa-mobile",
+            iconFontSize: 32,
+        }]
+    }
+
+    onChangeSidebarLink(fieldLabel) {
+        let { dispatch } = this.props
+
+        dispatch(actions.selectField(fieldLabel))
+    }
+
     render() {
+        let sidebarFields = this.fields.map((field, index) => {
+            return (
+                <li onClick={() => {
+                    this.onChangeSidebarLink(field.label)
+                }} key={index}>
+                    <a className={classnames({active: this.props.sidebar.selectedField === field.label})} href={`/#/${field.label}`}>
+                        <span style={{ fontSize: `${field.iconFontSize}px`, position: "relative", right: "10px", top: "3px" }} className={field.icon}/> {field.name}
+                    </a>
+                </li>
+            )
+        })
+
         return (
             <nav id="sidebar">
                 <div className="sidebar-header">
@@ -13,12 +54,7 @@ export default class Sidebar extends React.Component {
                 </div>
 
                 <ul className="list-unstyled components">
-                    <li className="active"><a href="#">
-                        <span style={{ fontSize: "20px", position: "relative", right: "10px", top: "1px" }} className="fa fa-tv"/> Desktop
-                    </a></li>
-                    <li className="active"><a href="#">
-                        <span style={{ fontSize: "28px", position: "relative", right: "10px", top: "3px" }} className="fa fa-mobile"/> Mobile
-                    </a></li>
+                    {sidebarFields}
                     <li id="copyright">
                         &copy; NameNotFoundException
                     </li>
