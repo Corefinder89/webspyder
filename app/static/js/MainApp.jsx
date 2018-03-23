@@ -1,5 +1,7 @@
 import React from "react"
 
+import { connect } from "react-redux"
+
 import {
   HashRouter,
   Route,
@@ -13,11 +15,18 @@ import Footer from "./common/Footer"
 
 import Analyze from "./pages/Analyze"
 
+import Spinner from "./components/Spinner"
 
+
+@connect((state) => state)
 export default class MainApp extends React.Component {
   render () {
+    const spinner = this.props.spinner.showSpinner ? (
+      <Spinner/>
+    ) : null
     return (
       <div className="wrapper">
+        {spinner}
         <Sidebar/>
         <div id="content">
           <Header/>
