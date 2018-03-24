@@ -25,10 +25,12 @@ export default class Sidebar extends React.Component {
         }]
     }
 
-    onChangeSidebarLink(fieldLabel) {
+    onChangeSidebarLink(mode) {
         let { dispatch } = this.props
 
-        dispatch(actions.selectField(fieldLabel))
+        dispatch(actions.selectMode(mode))
+
+        dispatch(actions.getStats(this.props.link.currentLink, mode))
     }
 
     render() {
@@ -37,7 +39,7 @@ export default class Sidebar extends React.Component {
                 <li onClick={() => {
                     this.onChangeSidebarLink(field.label)
                 }} key={index}>
-                    <a className={classnames({active: this.props.sidebar.selectedField === field.label})} href={`/#/${field.label}`}>
+                    <a className={classnames({active: this.props.sidebar.selectedMode === field.label})} href={`/#/${field.label}`}>
                         <span style={{ fontSize: `${field.iconFontSize}px`, position: "relative", right: "10px", top: "3px" }} className={field.icon}/> {field.name}
                     </a>
                 </li>

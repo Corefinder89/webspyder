@@ -60,16 +60,17 @@ header {
     border-bottom: 1px solid rgba(0,0,0,.1);
     padding: 0 $content-padding;
 
-    .form-group, button {
+    .form-group{
         width: 100%;
         position: relative;
-        top: 12px;
+        top: -2px;
     }
 
     button {
         background: $sidebar-color !important;
         color: $theme-color !important;
         outline: none !important;
+        width: 100%;
         
         &:hover {
             background: $theme-color !important;
@@ -107,6 +108,8 @@ footer {
 }
 
 .carousel-control{
+    bottom: auto !important;
+
     &.left, &.right {
         background-image: none;
     }

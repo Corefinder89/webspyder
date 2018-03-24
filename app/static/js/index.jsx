@@ -20,8 +20,6 @@ const store = createStore(combineReducers(reducer), compose(
   window.devToolsExtension ? window.devToolsExtension() : f => f
 ))
 
-store.dispatch(actions.selectField("desktop"))
-
 const renderApp = Component => {
   ReactDOM.render(
     <Provider store={store}>

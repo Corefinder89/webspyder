@@ -1,7 +1,7 @@
 from flask_restful import Resource
 
 
-class Stats(Resource):
+class StatsAPI(Resource):
 
-    def get(self, url):
+    def get(self):
         return ""

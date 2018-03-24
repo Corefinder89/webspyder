@@ -13,7 +13,7 @@ import Sidebar from "./common/Sidebar"
 import Header from "./common/Header"
 import Footer from "./common/Footer"
 
-import Analyze from "./pages/Analyze"
+import Analyse from "./pages/Analyse"
 
 import Spinner from "./components/Spinner"
 
@@ -33,8 +33,8 @@ export default class MainApp extends React.Component {
             <div id="main-content">
               <HashRouter>
                 <Switch>
-                  <Route path="/desktop" component={Analyze}/>
-                  <Route path="/mobile" component={Analyze}/>
+                  <Route path="/desktop" component={Analyse}/>
+                  <Route path="/mobile" component={Analyse}/>
                   <Redirect from="/" to="/desktop" />
                 </Switch>
               </HashRouter>

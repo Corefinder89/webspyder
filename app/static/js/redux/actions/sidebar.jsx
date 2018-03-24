@@ -1,15 +1,15 @@
-export const SIDEBAR_SELECT_FIELD = "SIDEBAR_SELECT_FIELD"
+export const SIDEBAR_SELECT_MODE = "SIDEBAR_SELECT_MODE"
 
 
-export const selectField = (fieldLabel) => {
+export const selectMode = (mode) => {
     return async (dispatch) => {
-        await dispatch({ type: SIDEBAR_SELECT_FIELD, fieldLabel })
+        await dispatch({ type: SIDEBAR_SELECT_MODE, mode })
     }
 }
 
 
 export default {
-    SIDEBAR_SELECT_FIELD,
+    SIDEBAR_SELECT_MODE,
 
-    selectField
+    selectMode
 }

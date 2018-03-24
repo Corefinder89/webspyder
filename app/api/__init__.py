@@ -1,1 +1,1 @@
-from .stats import Stats
+from .stats import StatsAPI

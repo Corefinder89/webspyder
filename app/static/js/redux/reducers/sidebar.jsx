@@ -1,16 +1,16 @@
 import {
-    SIDEBAR_SELECT_FIELD,
+    SIDEBAR_SELECT_MODE,
 } from '../actions/sidebar'
 
 let defaultState = {
-    selectedField: null,
+    selectedMode: null,
 }
 
 const sidebar = (state = defaultState, action) => {
     switch (action.type) {
-        case SIDEBAR_SELECT_FIELD:
+        case SIDEBAR_SELECT_MODE:
             return Object.assign({}, state, {
-                selectedField: action.fieldLabel,
+                selectedMode: action.mode,
             })
 
         default:

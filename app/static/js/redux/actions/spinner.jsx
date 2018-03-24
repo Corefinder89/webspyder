@@ -4,13 +4,13 @@ export const HIDE_SPINNER = "HIDE_SPINNER"
 
 export const showSpinner = () => {
     return async (dispatch) => {
-        await dispatch({ type: SHOW_SPINNER })
+        dispatch({ type: SHOW_SPINNER })
     }
 }
 
 export const hideSpinner = () => {
     return async (dispatch) => {
-        await dispatch({ type: HIDE_SPINNER })
+        dispatch({ type: HIDE_SPINNER })
     }
 }
 

@@ -24,7 +24,7 @@ export default class DonutChart extends React.Component {
         .padAngle(.03)
 
         let outerRadius = this.width / 2
-        let innerRadius = 70
+        let innerRadius = 90
 
         let color = d3.scale.category10()
 
