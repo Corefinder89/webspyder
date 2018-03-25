@@ -2,11 +2,16 @@ import React from "react"
 
 import $ from "jquery"
 import * as d3 from 'd3'
+import {event as currentEvent} from 'd3'
 
 
 export default class DonutChart extends React.Component {
     componentDidMount() {
         this.draw(this.props)
+    }
+
+    getShortHand(string) {
+        return string.split(' ').map(x => {return x.charAt(0)}).join("")
     }
 
     draw(props) {
@@ -24,9 +29,9 @@ export default class DonutChart extends React.Component {
         .padAngle(.03)
 
         let outerRadius = this.width / 2
-        let innerRadius = 90
+        let innerRadius = 100
 
-        let color = d3.scale.category10()
+        let color = d3.scale.category20()
 
         let arc = d3.svg.arc()
             .outerRadius(outerRadius)
@@ -66,7 +71,6 @@ export default class DonutChart extends React.Component {
                 }
             })
 
-
         let restOfTheData = () => {
             let text = svg.selectAll('text')
                 .data(pie(props.data))
@@ -86,6 +90,50 @@ export default class DonutChart extends React.Component {
                     fill: '#fff',
                     'font-size': '10px'
                 })
+
+                var legendRectSize=20;
+                var legendSpacing=7;
+                var legendHeight=legendRectSize+legendSpacing;
+             
+             
+                let legend=svg.selectAll('.legend')
+                    .data(color.domain())
+                    .enter()
+                    .append('g')
+                    .attr({
+                        class:'legend',
+                        transform: (d,i) => {
+                            //Just a calculation for x & y position
+                            return 'translate(-35,' + ((i*legendHeight)-65) + ')'
+                        }
+                    })
+
+                legend.append('rect')
+                    .attr({
+                        width: 15,
+                        height: 15,
+                        rx: 15,
+                        ry: 15
+                    })
+                    .style({
+                        fill:color,
+                        stroke:color
+                    })
+             
+                legend.append('text')
+                    .attr({
+                        x: 25,
+                        y: 12
+                    })
+                    .text((d) => {
+                        if (d.split(' ').length > 1) {
+                            return this.getShortHand(d)
+                        }
+                        return d
+                    }).style({
+                        fill:'#929DAF',
+                        'font-size':'12px',
+                    })
         }
 
         setTimeout(restOfTheData, 1000)
@@ -93,7 +141,7 @@ export default class DonutChart extends React.Component {
 
     render() {
         return (
-            <div {...this.props} id={this.props.id} style={{ textAlign: "center" }}/>
+            <div className="donut-chart" {...this.props} id={this.props.id} style={{ textAlign: "center" }}/>
         )
     }
 }

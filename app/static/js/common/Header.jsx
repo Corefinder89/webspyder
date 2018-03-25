@@ -19,6 +19,13 @@ export default class Header extends React.Component {
     constructor(...args) {
         super(...args)
 
+        this.svgIds = [
+            "weighted-tree-chart",
+            "pie-chart-0",
+            "pie-chart-1",
+            "pie-chart-2"
+        ]
+
         this.state = {
             inputLink: null,
         }
@@ -49,13 +56,19 @@ export default class Header extends React.Component {
         dispatch(actions.getStats(this.state.inputLink, this.props.sidebar.selectedMode))
     }
 
+    onClickExport() {
+        let { dispatch } = this.props
+
+        dispatch(actions.exportPDF(this.svgIds, this.props.stats.currentStats))
+    }
+
     render() {
         return (
             <header>
                 <Row>
                     <form onSubmit={this.onClickAnalyse.bind(this)}>
                         <FormGroup>
-                            <Col xs={10}>
+                            <Col xs={8}>
                                 <InputGroup>
                                     <InputGroup.Addon><span className="fa fa-globe"></span></InputGroup.Addon>
                                     <FormControl
@@ -67,6 +80,9 @@ export default class Header extends React.Component {
                             </Col>
                             <Col xs={2}>
                                 <Button type="submit">Analyse</Button>
+                            </Col>
+                            <Col xs={2}>
+                                <Button><span style={{ position: "relative", right: "5px", top: "1px" }} className="fa fa-download"></span> Export PDF</Button>
                             </Col>
                         </FormGroup>
                     </form>

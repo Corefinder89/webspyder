@@ -157,7 +157,7 @@ export default class WeightedTreeChart extends React.Component {
                 return this.diagonal({ source: o, target: o })
             })
             .attr("stroke", (d) => {
-                return d3.scale.category20c().domain(d3.range(0,20))(d.target.root)
+                return d3.scale.category20().domain(d3.range(0,20))(d.target.root)
             })
 
         // Transition links to their new position.

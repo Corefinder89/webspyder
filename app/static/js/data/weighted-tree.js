@@ -14,10 +14,6 @@ export default {
         root: 2,
         size: 10
     }, {
-        key: "SuperTag",
-        root: 3,
-        size: 10
-    }, {
         key: "Facebook",
         root: 3,
         size: 10

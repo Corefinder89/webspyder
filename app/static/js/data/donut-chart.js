@@ -1,34 +1,40 @@
 export default {
     time: [{
-        name: 'IE',
-        percent: 39.10
+        name: 'Google Analytics',
+        percent: 33.09
     }, {
-        name: 'Chrome',
+        name: 'SuperTag',
         percent: 32.51
     }, {
-        name: 'Safari',
+        name: 'DoubleClick',
         percent: 13.68
     }, {
-        name: 'Firefox',
+        name: 'Facebook',
         percent: 8.71
     }, {
-        name: 'Ithers',
+        name: 'Adobe',
+        percent: 6.01
+    }, {
+        name: "Google Tag Manager",
         percent: 6.01
     }],
     size: [{
-        name: 'IE',
-        percent: 39.10
+        name: 'Google Analytics',
+        percent: 33.09
     }, {
-        name: 'Chrome',
+        name: 'SuperTag',
         percent: 32.51
     }, {
-        name: 'Safari',
+        name: 'DoubleClick',
         percent: 13.68
     }, {
-        name: 'Firefox',
+        name: 'Facebook',
         percent: 8.71
     }, {
-        name: 'Ithers',
+        name: 'Adobe',
+        percent: 6.01
+    }, {
+        name: "Google Tag Manager",
         percent: 6.01
     }],
     overall: [{
@@ -44,7 +50,7 @@ export default {
         name: 'Firefox',
         percent: 8.71
     }, {
-        name: 'Ithers',
+        name: 'Others',
         percent: 6.01
     }],
 }

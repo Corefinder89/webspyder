@@ -8,3 +8,7 @@ const backendAxios = axios.create({
 export const StatsApi = {
     getStats: (params) => backendAxios.get("/api/stats", params),
 }
+
+export const ExportApi = {
+    exportPDF: (params) => backendAxios.post("/api/export", params),
+}
