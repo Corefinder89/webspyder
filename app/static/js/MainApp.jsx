@@ -14,6 +14,7 @@ import Header from "./common/Header"
 import Footer from "./common/Footer"
 
 import Analyse from "./pages/Analyse"
+import DataLayer from "./pages/DataLayer"
 
 import Spinner from "./components/Spinner"
 
@@ -35,6 +36,7 @@ export default class MainApp extends React.Component {
                 <Switch>
                   <Route path="/desktop" component={Analyse}/>
                   <Route path="/mobile" component={Analyse}/>
+                  <Route path="/datalayer" component={DataLayer}/>
                   <Redirect from="/" to="/desktop" />
                 </Switch>
               </HashRouter>

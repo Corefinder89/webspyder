@@ -9,6 +9,6 @@ export const StatsApi = {
     getStats: (params) => backendAxios.get("/api/stats", params),
 }
 
-export const ExportApi = {
-    exportPDF: (params) => backendAxios.post("/api/export", params),
+export const DataLayerApi = {
+    getDL: (params) => backendAxios.get("/api/datalayer", params),
 }

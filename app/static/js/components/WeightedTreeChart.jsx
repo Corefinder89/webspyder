@@ -257,7 +257,7 @@ export default class WeightedTreeChart extends React.Component {
 
     render() {
         return (
-            <div id={this.props.id} style={{ overflowY: "auto", marginLeft: "150px" }}/>
+            <div className="weighted-tree" id={this.props.id} style={{ overflowY: "auto" }}/>
         )
     }
 }

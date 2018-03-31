@@ -17,20 +17,36 @@ export default class Sidebar extends React.Component {
             name: "Desktop",
             icon: "fa fa-tv",
             iconFontSize: 24,
+            top: 3,
         }, {
             label: "mobile",
             name: "Mobile",
             icon: "fa fa-mobile",
             iconFontSize: 32,
+            top: 5,
+        }, {
+            label: "datalayer",
+            name: "DataLayer",
+            icon: "fa fa-database",
+            iconFontSize: 20,
+            top: 0,
         }]
     }
 
     onChangeSidebarLink(mode) {
+        if (this.props.sidebar.selectedMode === mode) {
+            return
+        }
+
         let { dispatch } = this.props
 
         dispatch(actions.selectMode(mode))
 
-        dispatch(actions.getStats(this.props.link.currentLink, mode))
+        if (mode === "datalayer") {
+            dispatch(actions.getDL(this.props.link.currentLink))
+        } else {
+            dispatch(actions.getStats(this.props.link.currentLink, mode))
+        }
     }
 
     render() {
@@ -40,7 +56,7 @@ export default class Sidebar extends React.Component {
                     this.onChangeSidebarLink(field.label)
                 }} key={index}>
                     <a className={classnames({active: this.props.sidebar.selectedMode === field.label})} href={`/#/${field.label}`}>
-                        <span style={{ fontSize: `${field.iconFontSize}px`, position: "relative", right: "10px", top: "3px" }} className={field.icon}/> {field.name}
+                        <span style={{ fontSize: `${field.iconFontSize}px`, position: "relative", right: "10px", top: `${field.top}px` }} className={field.icon}/> {field.name}
                     </a>
                 </li>
             )

@@ -6,9 +6,10 @@
     color: $sidebar-color;
     transition: all 0.3s;
     position: fixed;
+    z-index: 1001;
 
     .sidebar-header {
-        padding: 10px;
+        padding: 11.5px;
         background: $sidebar-header-bg;
 
         a {
@@ -52,30 +53,38 @@
     }
 }
 
+button {
+    background: $sidebar-color !important;
+    color: $theme-color !important;
+    outline: none !important;
+    width: 100%;
+    
+    &:hover {
+        background: $theme-color !important;
+        color: $sidebar-color !important;
+    }
+
+    &.close {
+        width: 20px !important;
+    }
+}
+
 header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
     height: $header-height;
     background: $header-bg;
     width: 100%;
     color: $sidebar-color;
-    border-bottom: 1px solid rgba(0,0,0,.1);
-    padding: 0 $content-padding;
+    padding: 0 $content-padding 0 $sidebar-width + $content-padding;
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,0.33);
 
     .form-group{
         width: 100%;
         position: relative;
-        top: -2px;
-    }
-
-    button {
-        background: $sidebar-color !important;
-        color: $theme-color !important;
-        outline: none !important;
-        width: 100%;
-        
-        &:hover {
-            background: $theme-color !important;
-            color: $sidebar-color !important;
-        }
+        top: 6px;
     }
 }
 
@@ -119,5 +128,13 @@ footer {
 
     &.left, &.right {
         background-image: none;
+    }
+}
+
+.modal-dialog {
+    margin-top: 150px;
+    
+    .modal-body {
+        min-height: 100px;
     }
 }

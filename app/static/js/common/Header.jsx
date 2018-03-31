@@ -53,13 +53,11 @@ export default class Header extends React.Component {
 
         dispatch(actions.selectLink(this.state.inputLink))
 
-        dispatch(actions.getStats(this.state.inputLink, this.props.sidebar.selectedMode))
-    }
-
-    onClickExport() {
-        let { dispatch } = this.props
-
-        dispatch(actions.exportPDF(this.svgIds, this.props.stats.currentStats))
+        if (this.props.sidebar.selectedMode === "datalayer") {
+            dispatch(actions.getDL(this.state.inputLink))
+        } else {
+            dispatch(actions.getStats(this.state.inputLink, this.props.sidebar.selectedMode))
+        }
     }
 
     render() {
