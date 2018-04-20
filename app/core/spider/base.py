@@ -1,6 +1,5 @@
 
 class Base():
-    dict = {}
     # Constructor that would initialize all the methods of the class
     def __init__(self, url):
         self.url = url
@@ -24,7 +23,6 @@ class Base():
     #Get required WebPage Information
     def parse_WebPageDetails(self):
         self.get_page()
-        requests=list()
         obj_requests = self.driver.execute_script("return window.performance.getEntries();")
         obj_overallPerformance = self.driver.execute_script("return performance.timing")
         obj_consoleLog = self.driver.get_log('browser')
@@ -33,4 +31,10 @@ class Base():
         self.close_driver()
 
         #Return dictionary of objects
-        return {"requests":obj_requests,"performance":obj_overallPerformance,"console":obj_consoleLog,"dataLayer":obj_dataLayer,"page_source":obj_pageSource}
+        return {
+            "requests": obj_requests,
+            "performance": obj_overallPerformance,
+            "console": obj_consoleLog,
+            "dataLayer": obj_dataLayer,
+            "page_source": obj_pageSource
+        }
