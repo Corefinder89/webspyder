@@ -8,15 +8,16 @@ import {
     Carousel
 } from "react-bootstrap"
 
+import ReactJson from 'react-json-view'
+
 import Card from "../components/Card"
 import WeightedTreeChart from "../components/WeightedTreeChart"
 import DonutChart from "../components/DonutChart"
 import Console from "../components/Console"
+import Collect from "../components/Collect"
 import Recommendation from "../components/Recommendation"
 
 import NoData from "../components/NoData"
-
-import recommendationData from "../data/recommendation"
 
 import actions from "../redux/actions"
 
@@ -32,12 +33,10 @@ export default class Analyse extends React.Component {
         }, {
             label: "Size Performance",
             name: "size"
-        },
-        // {
-        //     label: "Overall Page Performance",
-        //     name: "overall"
-        // }
-    ]
+        }, {
+            label: "Overall Page Performance",
+            name: "overall"
+        }]
 
         this.state = {
             index: 0,
@@ -68,7 +67,7 @@ export default class Analyse extends React.Component {
         let weightedTree = this.props.stats && this.props.stats.currentStats && this.props.stats.currentStats.libraries ? (
             <WeightedTreeChart
                 data={this.props.stats.currentStats.libraries}/>
-        ) : <NoData/>
+        ) : <NoData name={"libraries"}/>
 
         let performanceCharts = this.props.stats && this.props.stats.currentStats && this.props.stats.currentStats.performance ? (
             this.pieTitles.map((pie, index) => {
@@ -80,12 +79,39 @@ export default class Analyse extends React.Component {
                     </Carousel.Item>
                 )
             })
-        ) : <NoData/>
+        ) : <NoData name={"performance data"}/>
 
         let consoleData = this.props.stats && this.props.stats.currentStats && this.props.stats.currentStats.console ? (
             <Console
                 data={this.props.stats.currentStats.console}/>
-        ) : <NoData/>
+        ) : <NoData name={"console logs"}/>
+
+        let collectData = this.props.stats && this.props.stats.currentStats && this.props.stats.currentStats.collect && this.props.stats.currentStats.collect.length > 0 ? (
+            <Collect
+                data={this.props.stats.currentStats.collect}/>
+        ) : <NoData name={"collect requests"}/>
+
+        let cookiesData = this.props.stats && this.props.stats.currentStats && this.props.stats.currentStats.cookies && this.props.stats.currentStats.cookies.length > 0 ? (
+            <div style={{ overflowX: "auto", height: "306px" }}>
+                {this.props.stats.currentStats.cookies.filter(d => d).map((d, index) => {
+                    return (
+                        <ReactJson
+                            src={d}
+                            key={index}
+                            name={d.name}
+                            collapsed={1}
+                            enableClipboard={false}
+                            displayDataTypes={false}
+                            collapseStringsAfterLength={20}/>
+                    )
+                })}
+            </div>
+        ) : <NoData name={"analytics cookies"}/>
+
+        let recommendationData = this.props.stats && this.props.stats.currentStats && this.props.stats.currentStats.recommendations && this.props.stats.currentStats.recommendations.length > 0 ? (
+            <Recommendation
+                data={this.props.stats.currentStats.recommendations}/>
+        ) : <NoData name={"recommendations"}/>
 
         return (
             <div>
@@ -119,11 +145,24 @@ export default class Analyse extends React.Component {
                     </Col>
                 </Row>
                 <Row>
+                    <Col xs={6}>
+                        <Card
+                            title={"Analytics Collect Requests"}>
+                            {collectData}
+                        </Card>
+                    </Col>
+                    <Col xs={6}>
+                        <Card
+                            title={"Analytics Cookies"}>
+                            {cookiesData}
+                        </Card>
+                    </Col>
+                </Row>
+                <Row>
                     <Col xs={12}>
                         <Card
                             title={"Recommendations"}>
-                            <Recommendation
-                                data={recommendationData}/>
+                            {recommendationData}
                         </Card>
                     </Col>
                 </Row>

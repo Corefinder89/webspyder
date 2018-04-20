@@ -1,5 +1,7 @@
 from flask_restful import Resource, reqparse
 
+from app.core.spider.desktop import WebSpyder_Desktop
+
 parser = reqparse.RequestParser()
 parser.add_argument('url', type=str, required=True)
 
@@ -11,6 +13,7 @@ class DataLayerAPI(Resource):
 
         url = args.get('url')
 
-        return {
-            'url': url,
-        }
+        spider = WebSpyder_Desktop(url)
+        data = spider.parse_WebPageDetails()
+
+        return data['dataLayer']
