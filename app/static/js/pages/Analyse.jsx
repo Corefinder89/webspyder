@@ -64,18 +64,26 @@ export default class Analyse extends React.Component {
 
     render() {
 
-        let weightedTree = this.props.stats && this.props.stats.currentStats && this.props.stats.currentStats.libraries ? (
+        let weightedTree = this.props.stats && this.props.stats.currentStats && this.props.stats.currentStats.libraries && this.props.stats.currentStats.libraries.children.length > 0 ? (
             <WeightedTreeChart
                 data={this.props.stats.currentStats.libraries}/>
         ) : <NoData name={"libraries"}/>
 
         let performanceCharts = this.props.stats && this.props.stats.currentStats && this.props.stats.currentStats.performance ? (
             this.pieTitles.map((pie, index) => {
-                return (
-                    <Carousel.Item key={index}>
+                let chart = <NoData key={index}/>
+
+                if (this.props.stats.currentStats.performance[pie.name].length > 0) {
+                    chart = (
                         <DonutChart
                             id={`pie-chart-${index}`}
                             data={this.props.stats.currentStats.performance[pie.name]}/>
+                    )
+                }
+
+                return (
+                    <Carousel.Item style={{ height: "306px" }} key={index}>
+                        {chart}
                     </Carousel.Item>
                 )
             })
@@ -89,9 +97,9 @@ export default class Analyse extends React.Component {
         let collectData = this.props.stats && this.props.stats.currentStats && this.props.stats.currentStats.collect && this.props.stats.currentStats.collect.length > 0 ? (
             <Collect
                 data={this.props.stats.currentStats.collect}/>
-        ) : <NoData name={"collect requests"}/>
+        ) : <NoData style={{ height: "306px" }} name={"collect requests"}/>
 
-        let cookiesData = this.props.stats && this.props.stats.currentStats && this.props.stats.currentStats.cookies && this.props.stats.currentStats.cookies.length > 0 ? (
+        let cookiesData = this.props.stats && this.props.stats.currentStats && this.props.stats.currentStats.cookies && this.props.stats.currentStats.cookies.filter(d => d).length > 0 ? (
             <div style={{ overflowX: "auto", height: "306px" }}>
                 {this.props.stats.currentStats.cookies.filter(d => d).map((d, index) => {
                     return (

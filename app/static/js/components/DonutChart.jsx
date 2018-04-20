@@ -32,7 +32,10 @@ export default class DonutChart extends React.Component {
 
         let pie = d3.layout.pie()
         .value((d) => {
-            return d.percent.toFixed(2)
+            if (d.percent) {
+                return d.percent.toFixed(2)
+            }
+            return 0
         })
         .sort(null)
         .padAngle(.03)
@@ -93,7 +96,10 @@ export default class DonutChart extends React.Component {
                 .attr("dy", ".4em")
                 .attr("text-anchor", "middle")
                 .text((d) => {
-                    return d.data.percent.toFixed(2) + "%"
+                    if (d.data.percent) {
+                        return d.data.percent.toFixed(2) + "%"
+                    }
+                    return 0
                 })
                 .style({
                     fill: '#fff',

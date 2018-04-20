@@ -44,7 +44,7 @@ class TransformPerformance(object):
             }, {
                 "name": "Load Event",
                 "percent": response
-            }]
+            }] if dom_load and response else []
         }
 
     @staticmethod

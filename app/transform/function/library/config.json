@@ -10,6 +10,12 @@
             "$condition": "contains",
             "$value": "gtm.js",
             "$case": "ignorecase"
+          },
+          {
+            "$location": "path",
+            "$condition": "contains",
+            "$value": "gtm/js",
+            "$case": "ignorecase"
           }
         ]
       }
@@ -135,6 +141,28 @@
             "$location": "path",
             "$condition": "contains",
             "$value": "googleadservices.js",
+            "$case": "ignorecase"
+          }
+        ]
+      }
+    }
+  ],
+  "Publishers":[
+    {
+      "name":"Google Publisher Tag",
+      "condition":{
+        "$operator": "$or",
+        "conditions":[
+          {
+            "$location": "path",
+            "$condition": "contains",
+            "$value": "gpt.js",
+            "$case": "ignorecase"
+          },
+          {
+            "$location": "path",
+            "$condition": "contains",
+            "$value": "/gpt/",
             "$case": "ignorecase"
           }
         ]

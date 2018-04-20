@@ -33,7 +33,7 @@ class TransformLibrary(object):
     @staticmethod
     def ui_transform(url, libraries):
         tree = {
-            "key": url,
+            "key": urlparse(url).hostname,
             "size": 10 * len(libraries),
             "children": list()
         }
