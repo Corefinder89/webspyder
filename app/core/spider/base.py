@@ -5,7 +5,7 @@ class Base():
         self.url = url
         self.driver=self.start_driver()
         self.get_page()
-        self.parse_performanceDetails()
+        self.parse_WebPageDetails()
 
     def start_driver(self):
         pass
@@ -17,7 +17,7 @@ class Base():
         self.driver.get(self.url)
         self.driver.implicitly_wait(2)
 
-    def parse_performanceDetails(self):
+    def parse_WebPageDetails(self):
         self.get_page()
         requests=list()
         obj_requests = self.driver.execute_script("return window.performance.getEntries();")
@@ -30,6 +30,7 @@ class Base():
                 "size":transferSize,
                 "time":duration
             })
+            print
         obj_overallPerformance = self.driver.execute_script("return performance.timing")
         obj_consoleLog = self.driver.get_log('browser')
         obj_dataLayer = self.driver.execute_script("return dataLayer;")
