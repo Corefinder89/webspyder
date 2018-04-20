@@ -6,6 +6,7 @@ import os
 
 class WebSpyder_Desktop(Base):
 
+    # Start driver
     def start_driver(self):
         try:
             chrome_bin_path = self.get_driver_path()
@@ -22,11 +23,13 @@ class WebSpyder_Desktop(Base):
     sleep(4)
 
     @staticmethod
+    # Get the driver path
     def get_driver_path():
         path = os.getcwd()
         bin_path = os.path.join(path,'chromedriver')
         return bin_path
 
+    # COnfigure chrome options for Desktop
     @staticmethod
     def configure_chrome_options():
         options = webdriver.ChromeOptions()

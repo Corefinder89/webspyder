@@ -6,6 +6,7 @@ import os
 
 class WebSpyder_Mobile(Base):
 
+    # Start Driver
     def start_driver(self):
         try:
             chrome_bin_path = self.get_driver_path()
@@ -22,11 +23,13 @@ class WebSpyder_Mobile(Base):
     sleep(4)
 
     @staticmethod
+    # Get required driver path
     def get_driver_path():
         path = os.getcwd()
         bin_path = os.path.join(path,'chromedriver')
         return bin_path
 
+    # Configure chrome options for mobile - Includes configuration of User agent
     @staticmethod
     def configure_chrome_options():
         options = webdriver.ChromeOptions()
