@@ -33,5 +33,6 @@ class Base():
         obj_overallPerformance = self.driver.execute_script("return performance.timing")
         obj_consoleLog = self.driver.get_log('browser')
         obj_dataLayer = self.driver.execute_script("return dataLayer;")
+        obj_pageSource = self.driver.page_source
         self.close_driver()
-        return {"requests":requests,"performance":obj_overallPerformance,"console":obj_consoleLog,"dataLayer":obj_dataLayer}
+        return {"requests":requests,"performance":obj_overallPerformance,"console":obj_consoleLog,"dataLayer":obj_dataLayer,"page_source":obj_pageSource}
