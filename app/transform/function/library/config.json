@@ -24,11 +24,6 @@
             "$condition": "contains",
             "$value": "supertag-code-",
             "$case": "ignorecase"
-          },
-          {
-            "$location": "host",
-            "$condition": "contains",
-            "$value": ".supert.ag"
           }
         ]
       }

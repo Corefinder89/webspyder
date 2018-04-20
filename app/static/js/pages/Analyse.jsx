@@ -14,8 +14,8 @@ import DonutChart from "../components/DonutChart"
 import Console from "../components/Console"
 import Recommendation from "../components/Recommendation"
 
-import weightedTreeData from "../data/weighted-tree"
-import performanceData from "../data/donut-chart"
+import NoData from "../components/NoData"
+
 import consoleData from "../data/console"
 import recommendationData from "../data/recommendation"
 
@@ -33,10 +33,12 @@ export default class Analyse extends React.Component {
         }, {
             label: "Size Performance",
             name: "size"
-        }, {
-            label: "Overall Page Performance",
-            name: "overall"
-        }]
+        },
+        // {
+        //     label: "Overall Page Performance",
+        //     name: "overall"
+        // }
+    ]
 
         this.state = {
             index: 0,
@@ -63,15 +65,23 @@ export default class Analyse extends React.Component {
     }
 
     render() {
-        let performanceCharts = this.pieTitles.map((pie, index) => {
-            return (
-                <Carousel.Item key={index}>
-                    <DonutChart
-                        id={`pie-chart-${index}`}
-                        data={performanceData[pie.name]}/>
-                </Carousel.Item>
-            )
-        })
+
+        let weightedTree = this.props.stats && this.props.stats.currentStats ? (
+            <WeightedTreeChart
+                data={this.props.stats.currentStats.libraries}/>
+        ) : <NoData/>
+
+        let performanceCharts = this.props.stats && this.props.stats.currentStats ? (
+            this.pieTitles.map((pie, index) => {
+                return (
+                    <Carousel.Item key={index}>
+                        <DonutChart
+                            id={`pie-chart-${index}`}
+                            data={this.props.stats.currentStats.performance[pie.name]}/>
+                    </Carousel.Item>
+                )
+            })
+        ) : <NoData/>
 
         return (
             <div>
@@ -79,8 +89,7 @@ export default class Analyse extends React.Component {
                     <Col xs={12}>
                         <Card
                             title={"Libraries"}>
-                            <WeightedTreeChart
-                                data={weightedTreeData}/>
+                            {weightedTree}
                         </Card>
                     </Col>
                 </Row>

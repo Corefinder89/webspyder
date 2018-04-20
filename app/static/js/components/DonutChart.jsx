@@ -1,5 +1,7 @@
 import React from "react"
 
+import { isEqual } from "lodash"
+
 import $ from "jquery"
 import * as d3 from 'd3'
 import {event as currentEvent} from 'd3'
@@ -14,6 +16,13 @@ export default class DonutChart extends React.Component {
         return string.split(' ').map(x => {return x.charAt(0)}).join("")
     }
 
+    componentWillReceiveProps(nextProps) {
+        if (isEqual(this.props.data, nextProps.data)) {
+            return
+        }
+        this.draw(nextProps)
+    }
+
     draw(props) {
         let elementId = `#${props.id}`
         $(elementId).empty()
@@ -23,7 +32,7 @@ export default class DonutChart extends React.Component {
 
         let pie = d3.layout.pie()
         .value((d) => {
-            return d.percent
+            return d.percent.toFixed(2)
         })
         .sort(null)
         .padAngle(.03)
@@ -84,7 +93,7 @@ export default class DonutChart extends React.Component {
                 .attr("dy", ".4em")
                 .attr("text-anchor", "middle")
                 .text((d) => {
-                    return d.data.percent + "%"
+                    return d.data.percent.toFixed(2) + "%"
                 })
                 .style({
                     fill: '#fff',
