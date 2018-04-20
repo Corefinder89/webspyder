@@ -23,7 +23,6 @@ class TransformRecommendation(object):
     @staticmethod
     def valid_recommendation(recommendation, request, page_source):
         url = request['name']
-        print url, recommendation["value"], page_source
         return recommendation_type_map[recommendation['type']](url, recommendation["value"], page_source)
 
     @staticmethod
