@@ -3,7 +3,7 @@ import {
 } from '../actions/link'
 
 let defaultState = {
-    currentLink: 'https://www.datalicious.com',
+    currentLink: 'https://www.telstra.com.au/',
 }
 
 const link = (state = defaultState, action) => {
