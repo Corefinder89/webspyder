@@ -1,3 +1,4 @@
+from selenium.common.exceptions import WebDriverException
 
 class Base():
     # Constructor that would initialize all the methods of the class
@@ -5,7 +6,6 @@ class Base():
         self.url = url
         self.driver=self.start_driver()
         self.get_page()
-        self.parse_WebPageDetails()
 
     #Instantiate driver
     def start_driver(self):
@@ -26,7 +26,10 @@ class Base():
         obj_requests = self.driver.execute_script("return window.performance.getEntries();")
         obj_overallPerformance = self.driver.execute_script("return performance.timing")
         obj_consoleLog = self.driver.get_log('browser')
-        obj_dataLayer = self.driver.execute_script("return dataLayer;")
+        try:
+            obj_dataLayer = self.driver.execute_script("return dataLayer;")
+        except WebDriverException:
+            obj_dataLayer = None
         obj_pageSource = self.driver.page_source
         self.close_driver()
 

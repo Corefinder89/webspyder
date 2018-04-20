@@ -14,6 +14,6 @@ class Transform(object):
         )
 
         return {
-            'libraries': libraries,
+            'libraries': libraries['tree'],
             'performance': performance
         }
