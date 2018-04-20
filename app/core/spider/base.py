@@ -1,3 +1,6 @@
+from selenium.common.exceptions import WebDriverException
+
+
 class Base():
     # Constructor that would initialize all the methods of the class
     def __init__(self, url):

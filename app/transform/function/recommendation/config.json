@@ -1,0 +1,33 @@
+{
+    "config": [{
+        "name": "Google Tag Manager",
+        "type": "placement",
+        "value": "head",
+        "title": "gtm.js is not configured in <head>",
+        "message": "gtm.js should be configured under <head> section."
+    }, {
+        "name": "SuperTag",
+        "type": "placement",
+        "value": "body",
+        "title": "supertag.js is not configured in <body>",
+        "message": "supertag.js should be configured as close to opening <body> section."
+    }, {
+        "name": "Tealium",
+        "type": "placement",
+        "value": "body",
+        "title": "utag.js is not configured in <body>",
+        "message": "utag.js should be configured as close to opening <body> section."
+    }, {
+        "name": "Google Analytics",
+        "type": "depricated",
+        "value": "ga.js",
+        "title": "ga.js is loaded",
+        "message": "ga.js is a deprecaded library. Please use analytics.js or gtag.js."
+    }, {
+        "name": "GA Ecommerce",
+        "type": "depricated",
+        "value": "ec.js",
+        "title": "ec.js is loaded",
+        "message": "It is recommended to use ecommerce.js library rendered via anlaytics.js."
+    }]
+}

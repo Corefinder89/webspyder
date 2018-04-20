@@ -113,7 +113,7 @@ export default class DonutChart extends React.Component {
                         class:'legend',
                         transform: (d,i) => {
                             //Just a calculation for x & y position
-                            return 'translate(-35,' + ((i*legendHeight)-65) + ')'
+                            return 'translate(-55,' + ((i*legendHeight)-55) + ')'
                         }
                     })
 
@@ -135,7 +135,7 @@ export default class DonutChart extends React.Component {
                         y: 12
                     })
                     .text((d) => {
-                        if (d.split(' ').length > 1) {
+                        if (d.split(' ').length > 2) {
                             return this.getShortHand(d)
                         }
                         return d

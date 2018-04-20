@@ -3,7 +3,7 @@ import {
 } from '../actions/datalayer'
 
 let defaultState = {
-    currentDL: {},
+    currentDL: null,
 }
 
 const dl = (state = defaultState, action) => {

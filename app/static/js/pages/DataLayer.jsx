@@ -15,8 +15,7 @@ import {
 } from "react-bootstrap"
 
 import Card from "../components/Card"
-
-import dataLayer from "../data/datalayer"
+import NoData from "../components/NoData"
 
 import actions from "../redux/actions"
 
@@ -57,29 +56,32 @@ export default class DataLayer extends React.Component {
     }
 
     render() {
+        let dataLayer = this.props.dl && this.props.dl.currentDL ? (
+            <ReactJson
+                src={this.props.dl.currentDL}
+                name={"dataLayer"}
+                collapsed={2}
+                collapseStringsAfterLength={20}/>
+        ) : <NoData name={"dataLayer"}/>
 
         return (
             <div className="datalayer">
-                <Row>
+                {/* <Row>
                     <Col xsOffset={10} xs={2}>
                         <Button onClick={this.handleModalChange.bind(this)} id="upload">
                             <span style={{ position: "relative", right: "5px", top: "1px" }} className="fa fa-upload"></span> Import
                         </Button>
                     </Col>
-                </Row>
+                </Row> */}
                 <Row>
                     <Col xs={12}>
                         <Card
                             title={"DataLayer"}>
-                            <ReactJson
-                                src={dataLayer}
-                                name={"dataLayer"}
-                                collapsed={1}
-                                collapseStringsAfterLength={20}/>
+                            {dataLayer}
                         </Card>
                     </Col>
                 </Row>
-                <Modal show={this.state.showImportModal} onHide={this.handleModalChange.bind(this)}>
+                {/* <Modal show={this.state.showImportModal} onHide={this.handleModalChange.bind(this)}>
                     <Modal.Header closeButton>
                         <Modal.Title>Import from Google Spreadsheet</Modal.Title>
                     </Modal.Header>
@@ -100,7 +102,7 @@ export default class DataLayer extends React.Component {
                             </Col>
                         </FormGroup>
                     </Modal.Body>
-                </Modal>
+                </Modal> */}
             </div>
         )
     }
