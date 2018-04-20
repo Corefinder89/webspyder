@@ -16,7 +16,6 @@ import Recommendation from "../components/Recommendation"
 
 import NoData from "../components/NoData"
 
-import consoleData from "../data/console"
 import recommendationData from "../data/recommendation"
 
 import actions from "../redux/actions"
@@ -66,12 +65,12 @@ export default class Analyse extends React.Component {
 
     render() {
 
-        let weightedTree = this.props.stats && this.props.stats.currentStats ? (
+        let weightedTree = this.props.stats && this.props.stats.currentStats && this.props.stats.currentStats.libraries ? (
             <WeightedTreeChart
                 data={this.props.stats.currentStats.libraries}/>
         ) : <NoData/>
 
-        let performanceCharts = this.props.stats && this.props.stats.currentStats ? (
+        let performanceCharts = this.props.stats && this.props.stats.currentStats && this.props.stats.currentStats.performance ? (
             this.pieTitles.map((pie, index) => {
                 return (
                     <Carousel.Item key={index}>
@@ -81,6 +80,11 @@ export default class Analyse extends React.Component {
                     </Carousel.Item>
                 )
             })
+        ) : <NoData/>
+
+        let consoleData = this.props.stats && this.props.stats.currentStats && this.props.stats.currentStats.console ? (
+            <Console
+                data={this.props.stats.currentStats.console}/>
         ) : <NoData/>
 
         return (
@@ -110,8 +114,7 @@ export default class Analyse extends React.Component {
                     <Col xs={7}>
                         <Card
                             title={"Console Logs"}>
-                            <Console
-                                data={consoleData}/>
+                            {consoleData}
                         </Card>
                     </Col>
                 </Row>

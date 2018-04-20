@@ -3,7 +3,7 @@ import {
 } from '../actions/stats'
 
 let defaultState = {
-    currentStats: null,
+    currentStats: {},
 }
 
 const stats = (state = defaultState, action) => {
