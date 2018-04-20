@@ -18,6 +18,9 @@ class StatsAPI(Resource):
         url = args.get('url')
         mode = args.get('mode')
 
+        if not url.startswith("http"):
+            url = "http://" + url
+
         spider = mode_spider_map[mode](url)
         data = spider.parse_WebPageDetails()
 

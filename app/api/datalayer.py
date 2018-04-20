@@ -13,6 +13,9 @@ class DataLayerAPI(Resource):
 
         url = args.get('url')
 
+        if not url.startswith("http"):
+            url = "http://" + url
+
         spider = WebSpyder_Desktop(url)
         data = spider.parse_WebPageDetails()
 
