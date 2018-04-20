@@ -1,23 +1,13 @@
-<<<<<<< HEAD
-class Base ( ):
-    dict = {}
-
-    # Constructor that would initialize all the methods of the class
-    def __init__(self, url):
-        self.url = url
-        self.driver = self.start_driver ( )
-        self.get_page ( )
-        self.parse_WebPageDetails ( )
-=======
-from selenium.common.exceptions import WebDriverException
-
 class Base():
     # Constructor that would initialize all the methods of the class
     def __init__(self, url):
         self.url = url
         self.driver=self.start_driver()
         self.get_page()
->>>>>>> 41c7bb629393ce628c27308b0d61ca4239c92372
+        self.cookie_names = [
+            "_ga",
+            "_gclid"
+        ]
 
     # Instantiate driver
     def start_driver(self):
@@ -34,14 +24,6 @@ class Base():
 
     # Get required WebPage Information
     def parse_WebPageDetails(self):
-<<<<<<< HEAD
-        self.get_page ( )
-        requests = list ( )
-        obj_requests = self.driver.execute_script ("return window.performance.getEntries();")
-        obj_overallPerformance = self.driver.execute_script ("return performance.timing")
-        obj_consoleLog = self.driver.get_log ('browser')
-        obj_dataLayer = self.driver.execute_script ("return dataLayer;")
-=======
         self.get_page()
         obj_requests = self.driver.execute_script("return window.performance.getEntries();")
         obj_overallPerformance = self.driver.execute_script("return performance.timing")
@@ -50,21 +32,20 @@ class Base():
             obj_dataLayer = self.driver.execute_script("return dataLayer;")
         except WebDriverException:
             obj_dataLayer = None
->>>>>>> 41c7bb629393ce628c27308b0d61ca4239c92372
+        for i in self.cookie_names:
+            try:
+                obj_cookie = self.driver.get_cookie(i)
+            except WebDriverException as e:
+                obj_cookie = None
         obj_pageSource = self.driver.page_source
         self.close_driver ( )
 
-<<<<<<< HEAD
-        # Return dictionary of objects
-        return {"requests": obj_requests, "performance": obj_overallPerformance, "console": obj_consoleLog,
-                "dataLayer": obj_dataLayer, "page_source": obj_pageSource}
-=======
         #Return dictionary of objects
         return {
             "requests": obj_requests,
             "performance": obj_overallPerformance,
             "console": obj_consoleLog,
             "dataLayer": obj_dataLayer,
-            "page_source": obj_pageSource
+            "page_source": obj_pageSource,
+            "cookie": obj_cookie
         }
->>>>>>> 41c7bb629393ce628c27308b0d61ca4239c92372
