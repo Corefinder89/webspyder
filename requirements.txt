@@ -22,4 +22,6 @@ singledispatch==3.4.0.3
 six==1.11.0
 Werkzeug==0.14.1
 wrapt==1.10.11
+git+ssh://git@github.com/data-licious/config-loader.git@v1.0.0
 selenium==3.5.0
+requests==9.0.2
