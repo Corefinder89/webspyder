@@ -32,11 +32,13 @@ class Base():
             obj_dataLayer = self.driver.execute_script("return dataLayer;")
         except WebDriverException:
             obj_dataLayer = None
+        cookies = []
         for i in self.cookie_names:
             try:
                 obj_cookie = self.driver.get_cookie(i)
             except WebDriverException as e:
                 obj_cookie = None
+            cookies.append(obj_cookie)
         obj_pageSource = self.driver.page_source
         self.close_driver ( )
 
@@ -47,5 +49,5 @@ class Base():
             "console": obj_consoleLog,
             "dataLayer": obj_dataLayer,
             "page_source": obj_pageSource,
-            "cookie": obj_cookie
+            "cookies": cookies
         }
