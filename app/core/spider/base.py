@@ -26,15 +26,6 @@ class Base():
         self.get_page()
         requests=list()
         obj_requests = self.driver.execute_script("return window.performance.getEntries();")
-        for obj_name in obj_requests:
-            name = obj_name['name']
-            transferSize = obj_name.get('transferSize',0)
-            duration = obj_name['duration']
-            requests.append({
-                "name":name,
-                "size":transferSize,
-                "time":duration
-            })
         obj_overallPerformance = self.driver.execute_script("return performance.timing")
         obj_consoleLog = self.driver.get_log('browser')
         obj_dataLayer = self.driver.execute_script("return dataLayer;")
@@ -42,4 +33,4 @@ class Base():
         self.close_driver()
 
         #Return dictionary of objects
-        return {"requests":requests,"performance":obj_overallPerformance,"console":obj_consoleLog,"dataLayer":obj_dataLayer,"page_source":obj_pageSource}
+        return {"requests":obj_requests,"performance":obj_overallPerformance,"console":obj_consoleLog,"dataLayer":obj_dataLayer,"page_source":obj_pageSource}
