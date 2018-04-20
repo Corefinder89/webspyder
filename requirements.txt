@@ -23,3 +23,4 @@ six==1.11.0
 Werkzeug==0.14.1
 wrapt==1.10.11
 git+ssh://git@github.com/data-licious/config-loader.git@v1.0.0
+selenium==3.5.0
