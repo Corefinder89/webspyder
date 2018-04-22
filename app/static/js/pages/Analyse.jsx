@@ -87,12 +87,12 @@ export default class Analyse extends React.Component {
                     </Carousel.Item>
                 )
             })
-        ) : <NoData name={"performance data"}/>
+        ) : <NoData style={{ height: "306px" }} name={"performance data"}/>
 
-        let consoleData = this.props.stats && this.props.stats.currentStats && this.props.stats.currentStats.console ? (
+        let consoleData = this.props.stats && this.props.stats.currentStats && this.props.stats.currentStats.console && this.props.stats.currentStats.console.length > 0 ? (
             <Console
                 data={this.props.stats.currentStats.console}/>
-        ) : <NoData name={"console logs"}/>
+        ) : <NoData style={{ height: "306px" }} name={"console logs"}/>
 
         let collectData = this.props.stats && this.props.stats.currentStats && this.props.stats.currentStats.collect && this.props.stats.currentStats.collect.length > 0 ? (
             <Collect
@@ -114,7 +114,7 @@ export default class Analyse extends React.Component {
                     )
                 })}
             </div>
-        ) : <NoData name={"analytics cookies"}/>
+        ) : <NoData style={{ height: "306px" }}  name={"analytics cookies"}/>
 
         let recommendationData = this.props.stats && this.props.stats.currentStats && this.props.stats.currentStats.recommendations && this.props.stats.currentStats.recommendations.length > 0 ? (
             <Recommendation

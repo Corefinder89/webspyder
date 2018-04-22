@@ -1,5 +1,4 @@
 from selenium import webdriver
-from time import sleep
 from selenium.common.exceptions import WebDriverException
 from app.core.spider.base import Base
 import os
@@ -20,8 +19,6 @@ class WebSpyder_Mobile (Base):
         except WebDriverException as e:
             print "WebDriver exception"
             print e
-
-    sleep (4)
 
     @staticmethod
     # Get required driver path
