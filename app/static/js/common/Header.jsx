@@ -77,10 +77,10 @@ export default class Header extends React.Component {
                                 </InputGroup>
                             </Col>
                             <Col xs={2}>
-                                <Button type="submit">Analyse</Button>
+                                <Button type="submit"><span style={{ position: "relative", right: "5px", fontSize: "16px" }} className="fa fa-tachometer header-btn-icon"></span> <span className="header-btn-label">Analyse</span></Button>
                             </Col>
                             <Col xs={2}>
-                                <Button><span style={{ position: "relative", right: "5px", top: "1px" }} className="fa fa-download"></span> Export PDF</Button>
+                                <Button><span style={{ position: "relative", right: "5px", top: "1px", fontSize: "16px" }} className="fa fa-download header-btn-icon"></span> <span className="header-btn-label">Export PDF</span></Button>
                             </Col>
                         </FormGroup>
                     </form>

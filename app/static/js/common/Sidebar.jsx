@@ -56,7 +56,7 @@ export default class Sidebar extends React.Component {
                     this.onChangeSidebarLink(field.label)
                 }} key={index}>
                     <a className={classnames({active: this.props.sidebar.selectedMode === field.label})} href={`/#/${field.label}`}>
-                        <span style={{ fontSize: `${field.iconFontSize}px`, position: "relative", right: "10px", top: `${field.top}px` }} className={field.icon}/> {field.name}
+                        <span style={{ fontSize: `${field.iconFontSize}px`, position: "relative", right: "10px", top: `${field.top}px` }} className={`sidebar-icon ${field.icon}`}/> <span className="sidebar-label">{field.name}</span>
                     </a>
                 </li>
             )

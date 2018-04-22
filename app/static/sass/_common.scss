@@ -1,4 +1,10 @@
 #sidebar {
+    @media screen and (max-width: $sidebar-collapse-width) {
+        $sidebar-width: $sidebar-sm-width;
+        min-width: $sidebar-width;
+        max-width: $sidebar-width;
+    }
+
     min-width: $sidebar-width;
     max-width: $sidebar-width;
     height: 100vh;
@@ -17,6 +23,17 @@
             h3 {
                 font-weight: 600;
                 font-size: 18px;
+
+                @media screen and (max-width: $sidebar-collapse-width) {
+                    display: none !important;
+                }
+            }
+
+            img {
+                @media screen and (max-width: $sidebar-collapse-width) {
+                    left: -2px !important;
+                    top: 0 !important;
+                }
             }
         }
     }
@@ -24,6 +41,18 @@
     ul.components {
         padding: 10px 0;
         margin-top: 20px;
+
+        .sidebar-icon {
+            @media screen and (max-width: $sidebar-collapse-width) {
+                right: 0px !important;
+            }
+        }
+
+        .sidebar-label {
+            @media screen and (max-width: $sidebar-collapse-width) {
+                display: none !important;
+            }
+        }
     }
     
     ul {
@@ -45,6 +74,9 @@
     }
 
     #copyright {
+        @media screen and (max-width: $sidebar-collapse-width) {
+            display: none !important;
+        }
         position: absolute;
         bottom: $content-padding;
         left: 25px;
@@ -78,8 +110,23 @@ header {
     background: $header-bg;
     width: 100%;
     color: $sidebar-color;
+    @media screen and (max-width: $sidebar-collapse-width) {
+        padding: 0 $content-padding 0 $sidebar-sm-width + $content-padding;
+    }
     padding: 0 $content-padding 0 $sidebar-width + $content-padding;
     box-shadow: 0 1px 3px 0 rgba(0,0,0,0.33);
+
+    .header-btn-label {
+        @media screen and (max-width: 1080px) {
+            display: none !important;
+        }
+    }
+
+    .header-btn-icon {
+        @media screen and (max-width: 1080px) {
+            right: 0 !important;
+        }
+    }
 
     .form-group{
         width: 100%;

@@ -132,7 +132,7 @@ export default class Analyse extends React.Component {
                     </Col>
                 </Row>
                 <Row>
-                    <Col xs={5}>
+                    <Col xs={12} lg={5}>
                         <Card
                             title={this.state.pieTitle}>
                             <Carousel
@@ -145,7 +145,7 @@ export default class Analyse extends React.Component {
                             </Carousel>
                         </Card>
                     </Col>
-                    <Col xs={7}>
+                    <Col xs={12} lg={7}>
                         <Card
                             title={"Console Logs"}>
                             {consoleData}
@@ -153,13 +153,13 @@ export default class Analyse extends React.Component {
                     </Col>
                 </Row>
                 <Row>
-                    <Col xs={6}>
+                    <Col xs={12} md={6}>
                         <Card
                             title={"Analytics Collect Requests"}>
                             {collectData}
                         </Card>
                     </Col>
-                    <Col xs={6}>
+                    <Col xs={12} md={6}>
                         <Card
                             title={"Analytics Cookies"}>
                             {cookiesData}

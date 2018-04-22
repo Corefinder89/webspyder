@@ -8,6 +8,10 @@ body {
         display: flex;
 
         #content {
+            @media screen and (max-width: $sidebar-collapse-width) {
+                margin-left: $sidebar-sm-width;
+            }
+
             margin-left: $sidebar-width;
             position: relative;
             width: 100%;
